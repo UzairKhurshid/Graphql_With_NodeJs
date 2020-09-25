@@ -2,10 +2,12 @@ require('./db/mongoose')
 const express=require('express')
 const {graphqlHTTP}=require('express-graphql')
 const bodyParser=require('body-parser')
+const isAuth=require('./auth/auth')
 const app=express()
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(isAuth)
 
 const graphQlSchema = require('./graphql/schemas/index');
 const graphQlResolvers = require('./graphql/resolvers/index');
