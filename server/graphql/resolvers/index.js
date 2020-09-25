@@ -56,6 +56,20 @@ module.exports = {
     await user.save()
     return user;
   },
+  addPhone: async(parent, obj, context, info) => {
+    
+    let name=parent.name
+    let model=parent.model
+    let ownerID=parent.ownerID
+    const user=await User.findById({_id:mongoose.Types.ObjectId(parent.ownerID)})
+    if(!user){
+      throw new Error("User not found")
+    }
+    user.phones=user.phones.concat({name,model})
+    console.log(user)
+    await user.save()
+    return user;
+  },
   updateUser: async(parent, obj, context, info) => {
     console.log(obj)
     console.log(parent)

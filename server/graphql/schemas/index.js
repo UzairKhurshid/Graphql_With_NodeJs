@@ -4,6 +4,12 @@ module.exports = buildSchema(`
         name:String!
         email:String!
         age:Int
+        phones:[Phone]
+    }
+    type Phone{
+        name:String!
+        model: String!
+        ownerID:String!
     }
     type Project{
         name:String!
@@ -24,6 +30,7 @@ module.exports = buildSchema(`
     }
     type RootMutation {
         createUser(name: String!, email: String!, age: Int): User!
+        addPhone(name: String!,model: String!,ownerID:String!):User!
         updateUser(id: String!, name: String, email: String, age: Int): User!
         deleteUser(id: String!): User!
         createProject(name:String!,description: String!,ownerID:String!) : Project!

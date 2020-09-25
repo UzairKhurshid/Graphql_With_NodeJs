@@ -11,7 +11,15 @@ const userSchema=mongoose.Schema({
     },
     age:{
         type:String
-    }
+    },
+    phones:[{
+        name: {
+            type:String
+        },
+        model:{
+            type:String
+        }
+    }]
 })
 
 const User = mongoose.model("User",userSchema);
